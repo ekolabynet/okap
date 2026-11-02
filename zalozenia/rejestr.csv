@@ -1,0 +1,23 @@
+id;lancuch;symbol_w_kodzie;znaczenie;wartosc_domyslna;jednostka;rozklad_niepewnosci;zrodlo;status;gdzie_w_kodzie;test;odpowiedzialny;uwagi
+W01;wiatr;qRef;wiatr odniesienia: siła burzy, przy której liczone są zapasy pnia i zakotwienia oraz cel wzrostu korzeni;2;bez jednostki (umowny indeks, zachowuje się jak prędkość);brak;brak;robocze;"e2_params.js WORLD_DEFAULT; e5_sim.js refMech, rootTarget";T-wiatr-01;;"NIE jest to 2 kW; rozdzielić qRef diagnostyczne od q aklimatyzacji (spec 01 §4.6)"
+W02;wiatr;kw;współczynnik wiatru k_w: skala zszywająca stałe fizyczne (gęstość powietrza, opór, ramię siły) w obciążeniu pnia;0.00008;umowna (ukryta jednostka długości, spec 01 §4.2);ln CV 0,2;brak;robocze;e5_sim.js dReq;T-wiatr-01, T-wiatr-02;;"zmienić nazwę na k_wind; po przebudowie zastąpić C_d, A_f, z_p"
+W03;wiatr;windBase.wind;bazowa siła zdarzenia „wiatr”;1.3;jak q;brak (zmienność przez kostkę);brak;robocze;"e2_params.js; e5_sim.js drawEvent, annualPf";;;docelowo rozkład porywów v10 [m/s]
+W04;wiatr;windBase.storm;bazowa siła zdarzenia „burza”;2.0;jak q;brak;brak;robocze;jw.;;;
+W05;wiatr;windBase.gale;bazowa siła zdarzenia „wichura”;2.6;jak q;brak;brak;robocze;jw.;;;
+W06;wiatr;0.7+0.1*kostka;mnożnik siły zdarzenia z rzutu kostką 1–6;0.8–1.3;–;rozkład jednostajny dyskretny;reguła gry;robocze;e5_sim.js drawEvent, annualPf;;;docelowo kwantyle rozkładu porywów
+W07;wiatr;deck.*.wind/storm/gale;częstość zdarzeń wietrznych w taliach pór roku;"wiosna 8/100 wiatr; lato 8 wiatr, 9 burza; jesień 14 wiatr, 4 wichura; zima 5 wichura";wagi względne;brak;brak;robocze;e2_params.js deck;;;do kalibracji z klimatologią porywów
+W08;wiatr;(H/20)^0.3;profil wiatru z wysokością: potęgowy, wysokość odniesienia 20 m, wykładnik 0,3, liczony na wierzchołku;"α=0,3; z_ref=20";m (z_ref);brak;brak;robocze;e5_sim.js qAt;;;"sprawdzić z kategorią terenu wg EN 1991-1-4; liczyć w środku parcia korony, nie na wierzchołku"
+W09;wiatr;windRose;róża wiatrów: udział silnych wiatrów z 8 kierunków;N .05 NE .05 E .1 SE .1 S .1 SW .2 W .25 NW .15;udziały;brak;brak;robocze;"e2_params.js; e4_env.js exposure";;;do uzupełnienia z danych IMGW dla porywów
+W10;wiatr;exposure: 2H, 0.6, [0.4,1];osłona przez budynki i cudze korony do odległości 2H, maks. redukcja 60%, ekspozycja obcięta do 0,4–1;"2H; 0,6; 0,4";–;brak;brak;robocze;e4_env.js exposure;;;porównać z modelami przepływu / pomiarami osłony
+W11;wiatr;sail = W*(0.35+0.65*cf*LEAF_F);„żagiel” korony: szerokość × (część stała + ulistnienie);0,35 / 0,65;m (szerokość);brak;brak;robocze;e5_sim.js sail;;;fizycznie powinno być pole rzutu czołowego A_f = W·L_c·porowatość (spec 01 §4.2)
+W12;wiatr;LEAF_F;ulistnienie w porach roku dla żagla;"0,7; 1; 0,7; 0,25";udział;brak;brak;robocze;e5_sim.js LEAF_F;;;
+W13;wytrzymałość;sigma (gatunek);wytrzymałość drewna gatunku jako indeks względny;0,6–0,95 (lipa drobnolistna 0,95);bez jednostki;ln CV 0,15;brak;robocze;"e1_lib.js LIB; e5_sim.js sigEff, dBuck";;;zastąpić modułem zrywającym drewna świeżego MOR [MPa] z tablic
+W14;wytrzymałość;sigEff = sigma*(0.8+0.5*sw);modyfikacja wytrzymałości przez stan drewna sw;0,8 / 0,5;–;brak;brak;robocze;e5_sim.js sigEff;;;opisać znaczenie sw w rozdziale o wzroście
+W15;wytrzymałość;dEff = D*cbrt(1-dr^4);osłabienie pnia przez zgniliznę wewnętrzną (przekrój rury);wykładnik 4, 1/3;–;nie dotyczy;mechanika przekroju pierścieniowego;zweryfikowane analitycznie;e5_sim.js dEff;T-wiatr-01;;dr = stosunek średnicy wnęki do średnicy pnia
+W16;wytrzymałość;cb;stała wyboczenia (postać Greenhilla);106;umowna;ln CV 0,1;brak;robocze;e5_sim.js dBuck;;;zastąpić wzorem Greenhilla z E i gęstością drewna
+W17;zakotwienie;kA;współczynnik obciążenia zakotwienia;0.036;umowna;ln CV 0,2;brak;robocze;e5_sim.js anchReq;;;docelowo krytyczny moment wywracający z prób wyciągowych
+W18;zakotwienie;RC, rootTarget;nośność korzeni i jej cel wzrostu (1,5+0,8 sv)·(1−0,15 uszczelnienie)·f(alokacja);"1,5; 0,8; 0,15; 0,7–1,4";umowna;brak;brak;robocze;e5_sim.js rootTarget, invest;;;cel zależy od qRef (W01)
+W19;awaria;1.2*(1-mn), max 0.7;prawdopodobieństwo awarii w zdarzeniu przy zapasie mn < 1;"1,2; 0,7";–;brak;reguła gry;robocze;e5_sim.js windTest, annualPf;T-wiatr-05;;zastąpić P(m<1) z rozkładów niepewności
+W20;awaria;wetF, wet;osłabienie zakotwienia w mokrej porze (0,8) i preferencja wywrotu na wilgotnym siedlisku (1,3);"0,8; 1,3";–;brak;brak;robocze;e5_sim.js storms, windTest;;;
+W21;awaria;care>0: ×3;palikowanie posadzonych drzew w okresie pielęgnacji (3 lata) potraja zapas zakotwienia;3;–;brak;brak;robocze;e5_sim.js windTest;;;
+W22;awaria;H<2, H<4;progi wysokości: brak testu wiatru poniżej 2 m, sam test wyboczenia poniżej 4 m;"2; 4";m;brak;brak;robocze;e5_sim.js windTest;;;

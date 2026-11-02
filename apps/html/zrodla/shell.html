@@ -1,0 +1,216 @@
+<title>Okap Teren</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Układ: widok 2,5D (aksonometria lub mapa) z paskiem narzędzi, obok panel warstw; pod spodem przekrój i zakładki (wskaźniki, drzewo, dane, eksperymenty, parametry, zasady). */
+:root{
+  --bg:#EDEFEA; --surface:#F8F9F6; --surface-2:#E2E6DF; --ink:#1C2421; --ink-soft:#4C5A53; --line:#C8CFC6;
+  --accent:#A0522D; --accent-ink:#FBF6F2; --sky-top:#D9E4EA; --sky-bot:#F2F4F0; --grid:rgba(28,36,33,.10);
+  --bld:#8D959B; --bld-top:#B4BBC0; --crit:#B83B27; --warn:#C27B12; --good:#3A8048; --info:#2A6A8C;
+  --trunk:#6B5E52; --dead:#9C8A73; --road:#5B6166;
+  --t-zw:#4E7A53; --t-zs:#A78C4B; --t-uw:#5A8790; --t-us:#CBB688;
+  --s-trawnik:#7FA85A; --s-sciolka:#8A6A4A; --s-chodnik:#A9ADB0; --s-laka:#B8B45A; --s-zadrz:#5D7A3A; --s-rabata:#C98AA8; --s-klomb:#E0A04A; --s-grad:#3F6B3A; --s-leg:#4E7F6A; --s-ekoton:#8A9A4E;
+  --w1:#2A6A8C; --w2:#C2531F; --w3:#3D8A4A; --w4:#7B4FA6; --w5:#A87A1E; --w6:#4D5A55;
+  --card:#FFFFFF; --shadow:0 1px 0 rgba(28,36,33,.06),0 6px 18px rgba(28,36,33,.08);
+  --f-display:"Young Serif",Georgia,"Times New Roman",serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111614; --surface:#18201C; --surface-2:#212A26; --ink:#E3EAE5; --ink-soft:#A3B1A9; --line:#34413B;
+  --accent:#E08C5A; --accent-ink:#1A0F09; --sky-top:#18252D; --sky-bot:#121815; --grid:rgba(227,234,229,.09);
+  --bld:#59626A; --bld-top:#7A848B; --crit:#E86A52; --warn:#E6A23A; --good:#6DBE7C; --info:#73B6D8;
+  --trunk:#8C7E70; --dead:#7A6B58; --road:#3E4348;
+  --t-zw:#3B6141; --t-zs:#7D6A38; --t-uw:#416A73; --t-us:#8C7C57;
+  --s-trawnik:#5C8240; --s-sciolka:#6B5139; --s-chodnik:#6F7477; --s-laka:#8C893F; --s-zadrz:#46602C; --s-rabata:#9A6680; --s-klomb:#B07A2E; --s-grad:#2F5230; --s-leg:#3A6252; --s-ekoton:#6B7A38;
+  --w1:#73B6D8; --w2:#F08A5D; --w3:#7CCB86; --w4:#B795E0; --w5:#E6B85A; --w6:#AAB7B0;
+  --card:#1D2621; --shadow:0 1px 0 rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#111614; --surface:#18201C; --surface-2:#212A26; --ink:#E3EAE5; --ink-soft:#A3B1A9; --line:#34413B;
+  --accent:#E08C5A; --accent-ink:#1A0F09; --sky-top:#18252D; --sky-bot:#121815; --grid:rgba(227,234,229,.09);
+  --bld:#59626A; --bld-top:#7A848B; --crit:#E86A52; --warn:#E6A23A; --good:#6DBE7C; --info:#73B6D8;
+  --trunk:#8C7E70; --dead:#7A6B58; --road:#3E4348;
+  --t-zw:#3B6141; --t-zs:#7D6A38; --t-uw:#416A73; --t-us:#8C7C57;
+  --s-trawnik:#5C8240; --s-sciolka:#6B5139; --s-chodnik:#6F7477; --s-laka:#8C893F; --s-zadrz:#46602C; --s-rabata:#9A6680; --s-klomb:#B07A2E; --s-grad:#2F5230; --s-leg:#3A6252; --s-ekoton:#6B7A38;
+  --w1:#73B6D8; --w2:#F08A5D; --w3:#7CCB86; --w4:#B795E0; --w5:#E6B85A; --w6:#AAB7B0;
+  --card:#1D2621; --shadow:0 1px 0 rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;-webkit-text-size-adjust:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+.app{max-width:1360px;margin:0 auto;padding:12px max(16px,env(safe-area-inset-right)) 40px max(16px,env(safe-area-inset-left))}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:10px}
+.brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-right:auto}
+.brand h1{font-family:var(--f-display);font-weight:400;font-size:26px;margin:0;letter-spacing:.2px}
+.chip{font-family:var(--f-mono);font-size:12px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;color:var(--ink-soft);background:var(--surface)}
+.terrname{color:var(--ink-soft);font-size:13px}
+.ctrl{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 11px;cursor:pointer;min-height:34px;white-space:nowrap}
+.btn:hover{border-color:var(--ink-soft)}
+.btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.sm{padding:3px 8px;min-height:28px;font-size:13px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:transparent;padding:5px 10px;cursor:pointer;min-height:32px}
+.seg button.on{background:var(--ink);color:var(--bg)}
+label.inl{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-soft)}
+input[type=number],input[type=text],select,textarea{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:4px 6px;min-height:30px}
+input[type=number]{width:76px}
+textarea{width:100%;font-family:var(--f-mono);font-size:12.5px;min-height:90px;resize:vertical}
+input[type=range]{accent-color:var(--accent)}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 268px;gap:12px;align-items:start}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.viewbar,.toolbar{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--line)}
+.toolbar{border-bottom:0;border-top:1px solid var(--line)}
+.toolbar .seg{flex-wrap:wrap}
+.viewbox{position:relative;height:min(62vh,600px);min-height:340px;touch-action:none;cursor:grab}
+.viewbox.pick{cursor:crosshair}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hud{position:absolute;left:10px;top:10px;background:color-mix(in srgb,var(--card) 88%,transparent);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:13px;pointer-events:none;max-width:70%}
+.hud b{font-family:var(--f-display);font-weight:400;font-size:16px}
+.legend{position:absolute;right:10px;bottom:10px;background:color-mix(in srgb,var(--card) 90%,transparent);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:12px;max-width:min(60%,300px);pointer-events:none}
+.legend .lgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px 10px}.legend .lgrid span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.legend .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.legend .ramp{height:8px;border-radius:4px;margin:4px 0 2px;min-width:160px}
+.legend .rl{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--ink-soft)}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:4px 7px;border-radius:6px;white-space:nowrap;display:none;z-index:3}
+.side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;box-shadow:var(--shadow)}
+.box h3{font-family:var(--f-display);font-weight:400;font-size:16px;margin:0 0 6px}
+.box h4{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin:10px 0 4px}
+.lyr{display:flex;align-items:center;gap:7px;font-size:14px;padding:2px 0;cursor:pointer}
+.lyr input{margin:0;accent-color:var(--accent)}
+.lyr .u{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--ink-soft)}
+.note{font-size:13px;color:var(--ink-soft)}
+.secp{margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+.secp .bar{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--line)}
+.secp .bar b{font-family:var(--f-display);font-weight:400;font-size:16px;margin-right:auto}
+.secbox{position:relative;height:340px}
+#secCv{position:absolute;inset:0;width:100%;height:100%}
+.tabs{margin-top:12px}
+.tabbar{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);scrollbar-width:thin}
+.tabbar button{border:0;background:transparent;padding:8px 12px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;color:var(--ink-soft)}
+.tabbar button.on{color:var(--ink);border-bottom-color:var(--accent)}
+.panel{display:none;padding:12px 0}
+.panel.on{display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.card .k{font-size:12px;color:var(--ink-soft)}
+.card .v{font-family:var(--f-display);font-size:22px;line-height:1.2}
+.card .s{font-size:12px;color:var(--ink-soft)}
+.charts{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-top:10px}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px}
+.chart .t{font-size:13px;font-weight:700;margin-bottom:2px}
+.chart canvas{width:100%;height:150px;display:block}
+.chart.big canvas{height:260px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;color:var(--ink-soft);font-size:12px}
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-size:12px;white-space:nowrap}
+.scroll{overflow-x:auto}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;font-size:13.5px}
+.kv span:nth-child(odd){color:var(--ink-soft)}
+.kv span:nth-child(even){font-family:var(--f-mono);font-size:12.5px}
+.msg{font-size:13px;border-left:3px solid var(--info);padding:4px 8px;background:var(--card);margin:6px 0;border-radius:0 6px 6px 0}
+.msg.warn{border-color:var(--warn)}.msg.err{border-color:var(--crit)}.msg.ok{border-color:var(--good)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0}
+.prog{height:8px;background:var(--surface-2);border-radius:4px;overflow:hidden;flex:1;min-width:120px}
+.prog i{display:block;height:100%;background:var(--accent);width:0}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px 14px}
+.pgrid label{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:13px;padding:2px 0;border-bottom:1px dashed var(--line)}
+.pgrid label.chg{color:var(--accent)}
+.pgrid input{width:84px}
+.doc{max-width:760px;font-size:14.5px}
+.doc h3{font-family:var(--f-display);font-weight:400;font-size:19px;margin:16px 0 6px}
+.doc code{font-family:var(--f-mono);font-size:12.5px;background:var(--surface-2);padding:1px 4px;border-radius:4px}
+.doc li{margin:3px 0}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:14px;z-index:20;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw}
+.toast.on{opacity:1}
+.mono{font-family:var(--f-mono);font-size:12.5px}
+details summary{cursor:pointer;color:var(--ink-soft);font-size:13px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}.viewbox{height:56vh;min-height:300px}.brand h1{font-size:22px}}
+@media (max-width:520px){.app{padding-top:8px}.btn{padding:5px 9px}.secbox{height:280px}.hide-s{display:none}}
+</style>
+
+<div class="app">
+  <header class="top">
+    <div class="brand"><h1>Okap Teren</h1><span class="chip" id="verChip"></span><span class="terrname" id="terrName"></span></div>
+    <div class="ctrl">
+      <button class="btn pri" id="bPlay">▶ Graj</button>
+      <button class="btn" id="bSeason" title="Jedna pora roku">+ pora</button>
+      <button class="btn" id="bYear" title="Cały rok">+ rok</button>
+      <label class="inl">ziarno <input type="number" id="seed" value="7" min="1" style="width:64px"></label>
+      <button class="btn" id="bReset" title="Zacznij od nowa na tym terenie">Od nowa</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <section class="stage">
+      <div class="viewbar">
+        <div class="seg" id="modeSeg"><button data-m="axo" class="on">Aksonometria</button><button data-m="vox">Woksele</button><button data-m="map">Mapa</button></div>
+        <button class="btn sm" id="rotL" title="Obróć w lewo">⟲</button><button class="btn sm" id="rotR" title="Obróć w prawo">⟳</button>
+        <label class="inl hide-s">nachylenie <input type="range" id="tilt" min="20" max="75" value="38"></label>
+        <label class="inl">przewyższenie <select id="exag"><option>1</option><option selected>1.5</option><option>2</option><option>3</option><option>5</option></select></label>
+        <button class="btn sm" id="zIn">+</button><button class="btn sm" id="zOut">−</button><button class="btn sm" id="zFit">Dopasuj</button>
+      </div>
+      <div class="viewbox" id="vbox"><canvas id="gl" style="position:absolute;inset:0;width:100%;height:100%;display:none"></canvas><canvas id="cv"></canvas><div class="hud" id="hud"></div><div class="legend" id="legend"></div><div class="tip" id="tip"></div></div>
+      <div class="toolbar" id="tools">
+        <div class="seg" id="toolSeg">
+          <button data-t="pick" class="on">Wskaż</button><button data-t="section">Przekrój</button><button data-t="plant">Sadź</button><button data-t="cut">Wytnij</button><button data-t="prune">Przytnij</button><button data-t="brush">Pędzel</button>
+        </div>
+        <span id="toolOpts" class="row" style="margin:0"></span>
+        <span class="note" id="toolHint"></span>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="box">
+        <h3>Warstwa podłoża</h3>
+        <div id="lyrGround"></div>
+        <h4>Komponenty</h4>
+        <div id="lyrComp"></div>
+        <h4>Obiekty punktowe</h4>
+        <div class="row" style="margin:2px 0"><select id="ptSet" style="width:100%;min-width:0"></select></div>
+        <div class="seg" id="ptMode"><button data-p="off" class="on">Ukryj</button><button data-p="swarm">Rój</button><button data-p="heat">Mapa ciepła</button></div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="secp" id="secPanel" hidden>
+    <div class="bar">
+      <b id="secTitle">Przekrój</b>
+      <div class="seg" id="secSeg"><button data-s="prof" class="on">Profil 1,5D</button><button data-s="vert">Pionowy 2D</button><button data-s="horz">Poziomy 2D</button></div>
+      <label class="inl" id="secBandL">pas ± <input type="number" id="secBand" value="4" min="0.5" max="30" step="0.5"> m</label>
+      <label class="inl" id="secZL">wysokość <input type="range" id="secZ" min="0.3" max="30" step="0.1" value="1.6"> <span class="mono" id="secZv">1,6 m</span></label>
+      <button class="btn sm" id="secCsv">CSV</button>
+      <button class="btn sm" id="secClose">Zamknij</button>
+    </div>
+    <div class="secbox"><canvas id="secCv"></canvas></div>
+  </section>
+
+  <section class="tabs">
+    <nav class="tabbar" id="tabbar">
+      <button data-p="ind" class="on">Wskaźniki</button><button data-p="tree">Drzewo</button><button data-p="data">Dane</button><button data-p="exp">Eksperymenty</button><button data-p="par">Parametry</button><button data-p="rules">Zasady</button>
+    </nav>
+    <div class="panel on" id="p-ind"><div class="cards" id="cards"></div><div class="charts" id="charts"></div></div>
+    <div class="panel" id="p-tree"><div id="treeCard" class="note">Kliknij drzewo na widoku (narzędzie „Wskaż”).</div></div>
+    <div class="panel" id="p-data"></div>
+    <div class="panel" id="p-exp"></div>
+    <div class="panel" id="p-par"></div>
+    <div class="panel" id="p-rules"><div class="doc" id="rulesDoc"></div></div>
+  </section>
+</div>
+<div class="toast" id="toast"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script id="engine">
+/*ENGINE*/
+</script>
+<script>
+/*UI*/
+</script>
