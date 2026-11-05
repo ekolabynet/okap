@@ -20,5 +20,5 @@ Status: …   Data: RRRR-MM-DD   Decydują: …
 | 0001 | Repozytorium jako źródło prawdy o modelu | przyjęta |
 | 0002 | Specyfikacja wzorcem, implementacje sprawdzane wspólnymi testami | przyjęta |
 | 0003 | Pięć warstw i ich granice | proponowana |
-| 0004 | Język rdzenia silnika | otwarta |
+| 0004 | Język rdzenia silnika | otwarta (fakty o WorkField zebrane; propozycja: C++) |
 | 0005 | Wiatr i wytrzymałość w wielkościach fizycznych | proponowana |
