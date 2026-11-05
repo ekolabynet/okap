@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * © 2026 Piotr Mędrzycki, Paweł Mędrzycki */
 /* ================= dane: wczytywanie terenu, zapis warstw, tabel i ustawień ================= */
 let DL=null;
 async function saveFile(name,data){try{if(!DL&&window.claude&&claude.use)DL=await claude.use('downloads');}catch(e){DL=null;}

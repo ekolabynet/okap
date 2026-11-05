@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * © 2026 Piotr Mędrzycki, Paweł Mędrzycki */
 /* ================= widok wokselowy (WebGL2, bloki instancjonowane, ta sama aksonometria co widok 2D) ================= */
 const GLV={gl:null,prog:null,ok:null,vao:null,ibuf:null,count:0,dirty:true,loc:{}};
 function glInit(){if(GLV.ok!==null)return GLV.ok;const c=$('gl');let gl=null;try{gl=c.getContext('webgl2',{antialias:true});}catch(e){gl=null;}if(!gl){GLV.ok=false;return false;}

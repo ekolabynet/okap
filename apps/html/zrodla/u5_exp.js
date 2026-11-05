@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * © 2026 Piotr Mędrzycki, Paweł Mędrzycki */
 /* ================= eksperymenty: plan N × M × Q, tryb wsadowy w workerach, wyniki ================= */
 const EXP={running:false,workers:[],queue:[],done:0,total:0,results:[],plan:null,t0:0,saved:{plany:[],wyniki:[]},db:null,dbTried:false};
 const DEF_SETTINGS='bazowe |';

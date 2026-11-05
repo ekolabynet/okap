@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * © 2026 Piotr Mędrzycki, Paweł Mędrzycki */
 /* ================= nawierzchnie dodatkowe, kody rastrów ================= */
 SURF.jezdnia={name:'jezdnia',seal:1,mow:0,mulch:0,seed:false,compW:0,compN:0,irrig:0,dig:0,weed:0,nect:0,bioV:0,rbh:0,light:0,tall:0,inoc:{ecm:0,am:0,b:0}};
 SURF.budynek={name:'budynek',seal:1,mow:0,mulch:0,seed:false,compW:0,compN:0,irrig:0,dig:0,weed:0,nect:0,bioV:0,rbh:0,light:0,tall:0,inoc:{ecm:0,am:0,b:0}};

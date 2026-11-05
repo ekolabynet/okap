@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * © 2026 Piotr Mędrzycki, Paweł Mędrzycki */
 const HAB={zw:{name:'żyzne, wilgotne',short:'ŻW',prod:1.1,moist:1.0,nut:1.1},zs:{name:'żyzne, suche',short:'ŻS',prod:1.0,moist:0.72,nut:1.0},uw:{name:'ubogie, wilgotne',short:'UW',prod:0.85,moist:0.95,nut:0.85},us:{name:'ubogie, suche',short:'US',prod:0.75,moist:0.6,nut:0.75}};
 // nawierzchnia i runo (typy fizjonomiczne): seal uszczelnienie, mow koszenie, mulch ściółka, seed miejsce dla siewek, compW/compN konkurencja runa o wodę i azot,
 // irrig podlewanie, dig przekopywanie, weed pielenie, nect pożytek dla zapylaczy, bioV wartość przyrodnicza, rbh nakład na 2 m pasa rocznie, light światło potrzebne runu,

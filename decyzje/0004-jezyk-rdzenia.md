@@ -1,5 +1,5 @@
 # 0004. Język rdzenia silnika
-Status: otwarta   Data: 2026-11-02   Decydują: Piotr, Paweł
+Status: przyjęta (rdzeń w C++)   Data: 2026-11-02, przyjęta 2026-11-05   Decydują: Piotr, Paweł
 
 ## Problem
 Rdzeń ma działać w R, Pythonie, C++ (WorkFieldGIS) i w przeglądarce, być szybki (tryb wsadowy, duże obszary, woksele) i czytelny dla weryfikacji.
@@ -14,6 +14,9 @@ Rdzeń ma działać w R, Pythonie, C++ (WorkFieldGIS) i w przeglądarce, być sz
 
 ## Kryteria (do zważenia)
 Technologia WorkFieldGIS; wydajność w trybie wsadowym; łatwość weryfikacji równań; koszt utrzymania; dostępność w przeglądarce; kompetencje zespołu.
+
+## Decyzja
+Rdzeń silnika w **C++** (opcja A): biblioteka CMake z portem vcpkg dla WorkField, WebAssembly dla HTML, nakładki pybind11 (Python) i Rcpp (R). Do czasu jego powstania wzorcem roboczym zostaje silnik JavaScript (`reference/js/`). Licencje: decyzja 0006.
 
 ## Fakty o WorkField (repozytorium `ekolabynet/workfield`, stan z 2026-11-05)
 - Odgałęzienie QField: aplikacja w **C++ i QML na Qt 6** (m.in. Quick, Quick3D, Positioning, Sensors), oparta na bibliotece **QGIS** dołączanej przez **vcpkg** (wersja przypięta w porcie), budowana **CMake**; wydania na Androida i komputer.

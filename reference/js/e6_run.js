@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * © 2026 Piotr Mędrzycki, Paweł Mędrzycki */
 /* ================= przebiegi, eksperymenty, workery ================= */
 // ustawienie = {world:{k:v}, species:{klucz:{k:v}}} ; wartości nadpisują domyślne
 function applyOverrides(base,ov){if(!ov)return;if(ov.world)for(const k in ov.world)setK(base.world,k,ov.world[k]);
