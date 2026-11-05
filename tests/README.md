@@ -13,3 +13,4 @@ Rodzaje: testy jednostek (wymiarów), testy analityczne (tożsamości), testy zg
 | Test | Plik | Wynik na wersji odniesienia 4.1.0 |
 |---|---|---|
 | T-wiatr-03 | `skrypty/T-wiatr-03_wykladnik.js` | wykładnik `D_req ∝ H^b`: b = 0,533; oczekiwany z fizyki ≈ 0,867 → **niezgodne** (spec 01 §4.2) |
+| T-wiatr-00…08 | `skrypty/T-wiatr-fiz.js` | prototyp łańcucha fizycznego: 12/12 zgodnych (skalowanie, wykładnik 2/3 i (2 + 2α)/3, Greenhill, P(awaria), zakotwienie) |

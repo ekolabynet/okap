@@ -42,6 +42,7 @@ spec/          specyfikacja modelu (równania, jednostki, kolejność kroków)
 zalozenia/     rejestr założeń + opisy łańcuchów (np. wiatr → obciążenie → pień)
 decyzje/       dziennik decyzji architektonicznych
 reference/js/  obecny silnik JavaScript (wersja odniesienia, z której wyprowadzamy specyfikację)
+prototypy/     prototypy zmian modelu do weryfikacji przed wpięciem do silnika
 core/          docelowy rdzeń (język: decyzja 0004, otwarta)
 bindings/      nakładki: python/, r/, wasm/
 tests/         wspólne przypadki testowe i oczekiwane wyniki
