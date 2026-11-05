@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * © 2026 Piotr Mędrzycki, Paweł Mędrzycki */
 // T-wiatr-03: jak wymagana pierśnica D_req rośnie z wysokością H przy stałej koronie i ekspozycji (wersja odniesienia).
 // Fizyka (moment = siła na pole rzutu korony × ramię): D_req ∝ H^(2/3) bez profilu wiatru, ≈ H^0,87 z profilem (H/20)^0,3, gdy głębokość korony ∝ H.
 // Uruchom: node tests/skrypty/T-wiatr-03_wykladnik.js

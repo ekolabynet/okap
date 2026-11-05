@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * © 2026 Piotr Mędrzycki, Paweł Mędrzycki */
 /* ================= przekroje: profil 1,5D, przekrój pionowy 2D, przekrój poziomy 2D ================= */
 const SEC={a:null,b:null,show:false,mode:'prof',band:4,z:1.6,last:null};
 let scv,sctx;

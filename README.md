@@ -27,7 +27,7 @@ Projekt badawczy: Piotr i Paweł Mędrzyccy (Warszawa). Związany z projektem �
 
 ## Licencja
 
-Do czasu decyzji [0006](decyzje/0006-licencje.md): wszelkie prawa zastrzeżone (`LICENCJA.md`). Planowane podwójne licencjonowanie silnika (licencja otwarta + komercyjna) i CC BY 4.0 dla specyfikacji i dokumentacji. Zasady wnoszenia zmian: `CONTRIBUTING.md`.
+Silnik i kod: **MPL-2.0** (`LICENSE`); specyfikacja i dokumentacja: **CC BY 4.0** (`LICENSE-docs`). Szczegóły i licencja komercyjna: `LICENCJA.md`, decyzja [0006](decyzje/0006-licencje.md). Zasady wnoszenia zmian: `CONTRIBUTING.md`.
 
 ## Wersje
 

@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * © 2026 Piotr Mędrzycki, Paweł Mędrzycki */
 /* Prototyp łańcucha wiatru w wielkościach fizycznych (decyzja 0005, spec/01 §7).
  * Czyste funkcje, jednostki SI w nazwach i komentarzach. NIE jest częścią silnika gry.
  * Parametry bez sprawdzonego źródła mają wartość null: funkcja, która ich potrzebuje, zgłasza błąd,

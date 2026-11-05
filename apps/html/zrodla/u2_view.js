@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * © 2026 Piotr Mędrzycki, Paweł Mędrzycki */
 /* ================= widok 2,5D: aksonometria i mapa ================= */
 const V={mode:'axo',az:-30,el:38,exag:1.5,k:4,px:0,py:0,W:600,H:400,dpr:1,cx:0,cy:0,z0:0,ground:'surf',
   comp:{relief:true,bld:true,trees:true,labels:false,legend:true},pt:'people',ptMode:'off',sel:null,secA:null};

@@ -1,3 +1,6 @@
+/* SPDX-License-Identifier: MPL-2.0
+ * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ * © 2026 Piotr Mędrzycki, Paweł Mędrzycki */
 /* ================= teren: siatka, warstwy, pochodne ================= */
 // Siatka: wiersz 0 = północ (jak w ASC). Współrzędne lokalne w metrach: x rośnie na wschód, y na północ.
 // Komórka i = r*nx + c ma środek (x, y) = ((c+0.5)*res, (ny-r-0.5)*res). Współrzędne układu: X = xll + x, Y = yll + y.

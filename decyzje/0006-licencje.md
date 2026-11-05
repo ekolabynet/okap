@@ -1,5 +1,5 @@
 # 0006. Licencje: podwójne licencjonowanie silnika i licencje warstw
-Status: proponowana   Data: 2026-11-05   Decydują: Piotr, Paweł
+Status: przyjęta   Data: 2026-11-05   Decydują: Piotr, Paweł
 
 > Rozpoznanie opcji, nie porada prawna. Przed przyjęciem wariantu z licencją komercyjną i przed treścią umowy współtwórcy — konsultacja z prawnikiem.
 
@@ -30,6 +30,12 @@ Silnik ma trafić do WorkField (GPL-2.0-or-later), do pakietów R i Pythona, do 
 
 ### Licencja komercyjna
 Osobna umowa z firmą, która chce wbudować silnik bez warunków licencji otwartej. Warunki i cennik ustalane indywidualnie, poza repozytorium.
+
+## Decyzja (2026-11-05)
+- **Silnik:** **MPL-2.0** (bez oznaczenia „Incompatible With Secondary Licenses”, więc zachowana zgodność z GPL-2.0-or-later WorkField) — tekst w `LICENSE`.
+- **Specyfikacja, rejestr, decyzje, dokumentacja:** **CC BY 4.0** — tekst w `LICENSE-docs`.
+- **Posiadacze praw:** Piotr Mędrzycki i Paweł Mędrzycki jako osoby fizyczne.
+- **Licencja komercyjna:** furtka na przyszłość, bez oferty teraz. Możliwa, bo prawa należą do autorów; warunek utrzymania: umowa współtwórcy przed pierwszym wkładem z zewnątrz.
 
 ## Konsekwencje
 1. **Umowa współtwórcy (CLA) przed pierwszym wkładem z zewnątrz.** Bez niej nie da się utrzymać podwójnego licencjonowania. Treść do przygotowania z prawnikiem; do tego czasu zmiany wnoszą tylko Piotr i Paweł (`CONTRIBUTING.md`).
