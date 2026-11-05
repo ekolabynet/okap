@@ -7,6 +7,12 @@ Wiatr odniesienia `qRef = 2` i współczynnik `kw` nie mają jednostek; `kw` byw
 ## Propozycja
 Przebudować łańcuch na: prędkość porywu [m/s] → profil pionowy → ciśnienie dynamiczne [Pa] → siła na koronę [N] → moment [N·m] → naprężenie w pniu [MPa] → porównanie z wytrzymałością drewna świeżego [MPa]; zakotwienie jako krytyczny moment wywracający; prawdopodobieństwo awarii z rozkładów niepewności. Wartości ze źródeł (dane IMGW, Eurokod 1, tablice drewna, próby wyciągowe), z wpisami w rejestrze.
 
+## Stan prac
+- Specyfikacja docelowa: `spec/01-wiatr-i-mechanika.md` §7.
+- Prototyp: `prototypy/wiatr_fiz.js`; testy skalowania `tests/skrypty/T-wiatr-fiz.js` (12/12 zgodnych).
+- Rejestr: nowe parametry W23–W40 (status „do uzupełnienia”), stare W01–W19 oznaczone jako zastępowane.
+- Brakuje: wartości ze źródeł; dopiero potem wpięcie do silnika.
+
 ## Konsekwencje
 - Zmienią się zapasy i częstość awarii — trzeba porównać wersje przed/po na tych samych ziarnach.
 - Karty zdarzeń w grze dostaną prędkości w m/s.

@@ -90,3 +90,45 @@ Struktura do przyjęcia (decyzja `0005`); **wartości liczbowe do uzupełnienia 
 - **T-wiatr-03:** zależność `D_req(H)` przy stałej szerokości korony ma wykładnik zgodny z fizyką (≈ 2/3 bez profilu wiatru).
 - **T-wiatr-04:** zgodność implementacji (JS ↔ C++ ↔ R ↔ Python) na tym samym wejściu do tolerancji 1e-9.
 - **T-wiatr-05:** wrażliwość: wkład każdego parametru łańcucha w `m` i `pf` (np. analiza Sobola).
+
+## 7. Specyfikacja docelowa (wersja robocza 2, do przeglądu)
+
+Prototyp: `prototypy/wiatr_fiz.js`. Testy skalowania: `tests/skrypty/T-wiatr-fiz.js` (12 sprawdzeń, wszystkie zgodne). **Żadna wartość fizyczna poza stałymi (ρ powietrza, g) nie jest jeszcze wpisana** — parametry W23–W40 mają w prototypie `null` i funkcja, która ich potrzebuje, zgłasza błąd.
+
+### Wejścia na drzewo
+`H_m` wysokość, `Hb_m` wysokość podstawy korony, `Lc_m = H − Hb` długość korony, `W_m` szerokość korony (dziś `weq = 2·R_eff`), `D_m` pierśnica, `dr` = średnica wnęki / pierśnica, `cf` kondycja korony, `leafSeason` ulistnienie w porze roku, `exposure` (dzisiejszy wskaźnik 0,4–1), `rc` względny stan korzeni (1 = cel osiągnięty), `sp` gatunek.
+
+### Równania
+| Nr | Wielkość | Wzór | Jednostka | Parametry |
+|---|---|---|---|---|
+| 1 | poryw zdarzenia | `v10` z rozkładu dla klasy (wiatr, burza, wichura) i pory roku | m/s | W23 |
+| 2 | środek parcia | `z_p = Hb + ξ · Lc`, ξ z kształtu korony silnika: **ξ = 0,4644** | m | — (wyprowadzone) |
+| 3 | wiatr w środku parcia | `v(z_p) = v10 · (z_p / z_ref)^α` | m/s | W25, W26 |
+| 4 | osłona | `v_lok = v(z_p) · √exposure` (zachowuje dzisiejsze działanie ekspozycji na obciążenie ∝ v²) | m/s | — |
+| 5 | ciśnienie dynamiczne | `p = ½ · ρ_pow · v_lok²`, ρ_pow = 1,225 kg/m³ | Pa | stała |
+| 6 | pole rzutu korony | `A_f = W · Lc · κ · (a₀ + (1 − a₀) · cf · leafSeason)`, κ z kształtu korony: **κ = 0,8283** | m² | W27 |
+| 7 | współczynnik oporu | `C_d = C_d0` dla `v_lok ≤ v_r`, `C_d0 · (v_lok / v_r)^b` powyżej (rekonfiguracja, b < 0) | – | W28–W30 |
+| 8 | siła | `F = p · C_d · A_f` | N | — |
+| 9 | moment w przekroju pierśnicy | `M = F · (z_p − 1,3) · (1 + ε)` | N·m | W31, W32 |
+| 10 | naprężenie | `σ = 32 M / (π D³ (1 − dr⁴))` | Pa | — |
+| 11 | zapas pnia | `m = MOR_s / σ`; równoważnie `D_req = ∛(32 M / (π MOR_s (1 − dr⁴)))` | – | W33 |
+| 12 | wyboczenie | `H_kr = C_G · (E_s / (ρ_s g))^(1/3) · D^(2/3)` | m | W34–W36 |
+| 13 | zakotwienie | `M_kr = k_A · ρ_s · f_V · (π D²/4) · H · g · rc`, porównane z `M_baza = F · z_p` | N·m | W37, W38 |
+| 14 | awaria w zdarzeniu | `P = Φ(−ln m / s)`, `s = √(ln(1 + CV_R²) + ln(1 + CV_S²))` (zapas logarytmiczno-normalny) | – | W39, W40 |
+| 15 | roczne prawdopodobieństwo | jak dziś: suma po porach i klasach zdarzeń z wagami talii, `pf = 1 − e^(−p)` | – | W07 |
+
+### Co się zmienia względem wersji odniesienia
+- Moment ma brakującą długość: obciążenie ∝ `W · Lc · z_p`, więc `D_req ∝ H^(2/3)` bez profilu i `∝ H^((2 + 2α)/3)` z profilem (testy T-wiatr-03b, 03c). Dziś jest `H^(1/3)` i `H^0,533`.
+- Profil wiatru liczony w środku parcia korony, nie na wierzchołku.
+- Wytrzymałość, sztywność i gęstość drewna w jednostkach SI z tablic drewna świeżego zamiast indeksu `σ_s`.
+- Zakotwienie jako krytyczny moment wywracający proporcjonalny do ciężaru pnia (postać do potwierdzenia z prób wyciągowych), a dzisiejsza nośność korzeni `RC` staje się względnym stanem `rc`.
+- Prawdopodobieństwo awarii z rozkładu zapasu zamiast reguły `1,2·(1 − mn)` z obcięciem 0,7.
+- Rozdzielenie: `qRef` zostaje tylko jako wiatr diagnostyczny (np. „poryw 25 m/s”), a cel wzrostu korzeni dostaje osobny parametr aklimatyzacji (do zapisania w rozdziale o korzeniach).
+
+### Zgodność z grą
+Karty zdarzeń dostają porywy w m/s. Do porównań ze starą wersją służy przelicznik `v10 = v_per_q · q` (W24) — tylko na czas przejścia.
+
+### Kolejne kroki
+1. Zebrać źródła dla W23–W40 (każda wartość ze źródłem i statusem w rejestrze).
+2. Na tych wartościach policzyć drzewa wzorcowe (T-wiatr-02) i porównać z przedziałami z literatury.
+3. Wpiąć łańcuch do silnika za przełącznikiem i porównać przebiegi przed/po na tych samych ziarnach.
