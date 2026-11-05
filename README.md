@@ -25,6 +25,10 @@ Projekt badawczy: Piotr i Paweł Mędrzyccy (Warszawa). Związany z projektem �
 5. **Nie zmyślamy liczb ani źródeł.** Wartość bez źródła ma status `robocze`. Cytowania (DOI) sprawdzane przed wpisaniem.
 6. **Granica przekrój / dynamika:** wzorce stojące z gry lub danych przekrojowych nie są testem dynamiki.
 
+## Licencja
+
+Do czasu decyzji [0006](decyzje/0006-licencje.md): wszelkie prawa zastrzeżone (`LICENCJA.md`). Planowane podwójne licencjonowanie silnika (licencja otwarta + komercyjna) i CC BY 4.0 dla specyfikacji i dokumentacji. Zasady wnoszenia zmian: `CONTRIBUTING.md`.
+
 ## Wersje
 
 Numeracja `Główna.Pomniejsza.Poprawka` + nazwa kodowa (słowo miejskie + rodzaj drzewa), np. `4.1.0 Brick Betula`.
